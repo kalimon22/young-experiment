@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Experimento de Young.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Young</title>
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="css/google-fonts.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+
+<body class="mdl-young mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+                <h3>Experimento de difracción de Young</h3>
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+                <a href="#experiment" class="mdl-layout__tab is-active">El experimento</a>
+                <a href="#notas" class="mdl-layout__tab">Notas</a>
+                <a href="#referencias" class="mdl-layout__tab">Referencias</a>
+
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="mdl-layout__tab-panel is-active" id="experiment">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__supporting-text">
+                            <canvas id="canvas" width="900" height="450">
+                                This text is displayed if your browser does not support HTML5 Canvas.
+                            </canvas>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a href="#" class="mdl-button">Read our features</a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="mdl-layout__tab-panel" id="notas">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Features</h4>
+                        Minim duis incididunt est cillum est ex occaecat consectetur. Qui sint ut et qui nisi cupidatat.
+                        Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <a href="#lorem1">Lorem ipsum</a>
+                            <a href="#lorem2">Lorem ipsum</a>
+                            <a href="#lorem3">Lorem ipsum</a>
+                            <a href="#lorem4">Lorem ipsum</a>
+                            <a href="#lorem5">Lorem ipsum</a>
+                        </ul>
+
+                        <h5 id="lorem1">Lorem ipsum dolor sit amet</h5>
+                        Excepteur et pariatur officia veniam anim culpa cupidatat consequat ad velit culpa est non.
+                        <ul>
+                            <li>Nisi qui nisi duis commodo duis reprehenderit consequat velit aliquip.</li>
+                            <li>Dolor consectetur incididunt in ipsum laborum non et irure pariatur excepteur anim
+                                occaecat officia sint.</li>
+                            <li>Lorem labore proident officia excepteur do.</li>
+                        </ul>
+
+                        <p>
+                            Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor
+                            id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea
+                            mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa
+                            sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id
+                            culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate
+                            irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore
+                            nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna
+                            excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
+                        </p>
+
+                    </div>
+                </section>
+            </div>
+            <div class="mdl-layout__tab-panel" id="referencias">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Referencias técnicas</h4>
+                        Para la creación de está página, se han utilizado algunos recursos abiertos disponibles en
+                        internet
+                        <ul>
+                            <li>La librería de componentes <a href="https://getmdl.io">Material Design Lite</a></li>
+                            <li>Las fuentes abiertas de <a href="https://fonts.google.com/">Google Fonts</a></li>
+                            <li>La librería de iconos <a href="https://freeicons.io/">freeicons.io</a></li>
+                        </ul>
+                        <h4>Para la emulación del experimento</h4>
+                        Se han tomado diferentes ideas, tanto de emulación como de disposición de los elementos gráficos
+                        de diferentes fuentes de internet, básicamente de la página de <a
+                            href="https://www.compadre.org/osp/items/detail.cfm?ID=13753">Open Souce
+                            Physics</a> y la página de <a
+                            href=https://iwant2study.org/ospsg/index.php/interactive-resources/physics/06-quantum-physics/119-double-slit-wave-particle-duality-model>Open
+                            Educational Resources / Open Source Physics @ Singapore</a>. También se han tomado algunas
+                            gráficas y de codificación de las siguientes fuentes <ul>
+                            <li>Ideas para la representacion de las ondas <a
+                                    href="https://github.com/spennino/double-slit">https://github.com/spennino/double-slit</a>
+                            </li>
+                            <li>Disposición física de los elementos gráficos, e ideas para la creación de la
+                                simulación de <a
+                                    href="https://github.com/sunDalik/Interference-simulator">https://github.com/sunDalik/Interference-simulator</a>
+                            </li>
+                            <li>Base teórica y algunas ecuaciones de la web de <a
+                                    href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/slits.html">hyperphysics</a>
+                            </li>
+                            </ul>
+
+
+                    </div>
+                </section>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Experimento de Young</div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="https://github.com">Código fuente en GitHub</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/text-only/" target="_blank"
+        id="view-source"
+        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Ver
+        código fuente</a>
+    <script src="js/material.min.js"></script>
+    <script src="js/emulador.js"></script>
+</body>
+
+</html>
