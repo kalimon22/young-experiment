@@ -9,7 +9,6 @@
     <title>Young</title>
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <link rel="stylesheet" href="css/google-fonts.css">
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <style>
@@ -47,16 +46,69 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text">
+                                <div class="mdl-grid">
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--center">
+        
+                                            <div style="text-align:center" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <select class="mdl-textfield__input" id="numslits" name="numslits">
+                                                    <option value="1">1 rendija</option>
+                                                    <option value="2">2 rendijas</option>
+                                                    <option value="3">3 rendijas</option>
+                                                    <option value="4">4 rendijas</option>
+                                                    <option value="5">5 rendijas</option>
+                                                </select>
+                                                <label class="mdl-textfield__label" for="numslits">Número de rendijas</label>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--middle   ">
+                                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-difraction">
+                                                <input type="checkbox" id="switch-difraction" class="mdl-switch__input" checked>
+                                                <span class="mdl-switch__label">Incluir la difracción</span>
+                                            </label>
+                                        </div>
+                                        <div class="mdl-cell mdl-cell--4-col mdl-cell--middle ">
+                                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="clean-screen">
+                                                Limpiar impactos
+                                            </button>
+                                        </div>
+                                    </div>
                             <canvas id="canvas" width="900" height="450">
-                                This text is displayed if your browser does not support HTML5 Canvas.
+                                Su navegador no soporta Canvas. La representación gráfica no funcionará.
                             </canvas>
                         </div>
                         <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div style="text-align:center">Valor &delta;<sub>x</sub>: <span id = "deltax">20</span> nm.</div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div style="text-align:center">Posición en pantalla: <span id="position">3</span> mm.</div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div style="text-align:center">Intensidad relativa: <span id="intensity">0.32</span></div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <input class="mdl-slider mdl-js-slider" id="octano" type="range" min="0" max="100"
+                                        value="0" tabindex="0">
+                                    <div style="text-align:center">Distancia pantalla: <span id="screen-distance">7</span> m.</div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col"><input class="mdl-slider mdl-js-slider"
+                                        id="octano" type="range" min="0" max="100" value="0" tabindex="0">
+                                    <div style="text-align:center">Distancia rendijas: <span id="slits-distance">5</span> mm.</div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col"><input class="mdl-slider mdl-js-slider"
+                                        id="octano" type="range" min="0" max="100" value="0" tabindex="0">
+                                    <div style="text-align:center">Longitud onda: <span id="wavelenght">20</span> nm.</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-
             </div>
             <div class="mdl-layout__tab-panel" id="notas">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
@@ -99,22 +151,21 @@
             <div class="mdl-layout__tab-panel" id="referencias">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
-                        <h4>Referencias técnicas</h4>
+                        <h4>Recursos abiertos utilizados</h4>
                         Para la creación de está página, se han utilizado algunos recursos abiertos disponibles en
                         internet
                         <ul>
-                            <li>La librería de componentes <a href="https://getmdl.io">Material Design Lite</a></li>
-                            <li>Las fuentes abiertas de <a href="https://fonts.google.com/">Google Fonts</a></li>
-                            <li>La librería de iconos <a href="https://freeicons.io/">freeicons.io</a></li>
+                            <li>La librería de componentes <a href="https://getmdl.io">Material Design Lite</a>, con licencia libre Apache. La estructura de la página se basa en una de las <a href="https://getmdl.io/templates/text-only/index.html">plantillas</a></li>
+                            <li>La librería de iconos <a href="https://freeicons.io/">freeicons.io</a>, para la obtención del favicon utlilizado</li>
                         </ul>
-                        <h4>Para la emulación del experimento</h4>
+                        <h4>Fuentes de inspiración</h4>
                         Se han tomado diferentes ideas, tanto de emulación como de disposición de los elementos gráficos
-                        de diferentes fuentes de internet, básicamente de la página de <a
+                        de diferentes fuentes de internet, entre las que podemos destacar la página <a
                             href="https://www.compadre.org/osp/items/detail.cfm?ID=13753">Open Souce
                             Physics</a> y la página de <a
                             href=https://iwant2study.org/ospsg/index.php/interactive-resources/physics/06-quantum-physics/119-double-slit-wave-particle-duality-model>Open
-                            Educational Resources / Open Source Physics @ Singapore</a>. También se han tomado algunas
-                            gráficas y de codificación de las siguientes fuentes <ul>
+                            Educational Resources / Open Source Physics @ Singapore</a>. También se han tomado algunas ideas
+                            gráficas que han servido de inspiración, de:<ul>
                             <li>Ideas para la representacion de las ondas <a
                                     href="https://github.com/spennino/double-slit">https://github.com/spennino/double-slit</a>
                             </li>
@@ -126,8 +177,6 @@
                                     href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/slits.html">hyperphysics</a>
                             </li>
                             </ul>
-
-
                     </div>
                 </section>
             </div>
@@ -141,8 +190,7 @@
             </footer>
         </main>
     </div>
-    <a href="https://github.com/kalimon22/young-experiment" target="_blank"
-        id="view-source"
+    <a href="https://github.com/kalimon22/young-experiment" target="_blank" id="view-source"
         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Ver
         código fuente</a>
     <script src="js/material.min.js"></script>
