@@ -6,7 +6,7 @@ var dragslitsX = false;
 var dragslitsY = false;
 var wavespeed = {
     radio: 0,
-    speed: 5,
+    speed: 2,
     moment: 0
 }
 var slits = {
