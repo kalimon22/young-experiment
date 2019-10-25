@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--middle ">
                                     <button
-                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored">
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored" id="clean-impacts">
                                         Limpiar impactos
                                     </button>
                                 </div>
@@ -86,7 +86,7 @@
                                             id="deltax">20</span> nm.</div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col">
-                                    <div style="text-align:center">Posición en pantalla: <span id="position">3</span>
+                                    <div style="text-align:center">Posición en pantalla: <span id="position">0</span>
                                         mm.</div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col">
@@ -99,18 +99,21 @@
 
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--4-col">
-                                    <input class="mdl-slider mdl-js-slider" id="octano" type="range" min="0" max="100"
-                                        value="0" tabindex="0">
+                                    <input class="mdl-slider mdl-js-slider" id="slider-screen-distance" type="range"
+                                        min="0" max="100" value="0" tabindex="0"><br>
                                     <div style="text-align:center">Distancia pantalla: <span
-                                            id="screen-distance">7</span> m.</div>
+                                            id="screen-distance">0</span> m.</div>
                                 </div>
-                                <div class="mdl-cell mdl-cell--4-col"><input class="mdl-slider mdl-js-slider"
-                                        id="octano" type="range" min="0" max="100" value="0" tabindex="0">
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <input class="mdl-slider mdl-js-slider" id="slider-slits-distance" type="range"
+                                        min="0" max="100" value="0" tabindex="0">
+                                    <br>
                                     <div style="text-align:center">Distancia rendijas: <span
                                             id="slits-distance">5</span> mm.</div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col"><input class="mdl-slider mdl-js-slider"
-                                        id="octano" type="range" min="0" max="100" value="0" tabindex="0">
+                                        id="slider-wavelenght" type="range" min="0" max="100" value="0" tabindex="0">
+                                    <br>
                                     <div style="text-align:center">Longitud onda: <span id="wavelenght">20</span> nm.
                                     </div>
                                 </div>
@@ -207,6 +210,7 @@
         código fuente</a>
     <script src="js/material.min.js"></script>
     <script src="js/emulador.js"></script>
+    <script src="js/interaction.js"></script>
 </body>
 
 </html>
