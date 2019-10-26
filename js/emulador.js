@@ -31,7 +31,8 @@ var wave = {
     lambda: 480,
     delta: 0,
     min: 300,
-    max: 800
+    max: 800,
+    dif: true,
 }
 
 function calculatedistance(pixels) {
@@ -87,7 +88,7 @@ function mousemove(e) {
                 slits.initial = pos.y
             slits.length = (contextHeight - slits.num * slits.size - 2 * slits.initial) / (slits.num - 1)
             sliderslitsdistance.value = slits.length
-            slitsdistance.innerHTML = calculateslits(slits.length)
+            slitsdistance.innerHTML = calculateslitslength(slits.length)
         }
     }
 }
