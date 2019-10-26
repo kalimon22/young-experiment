@@ -25,13 +25,21 @@ var conversion = {
     x: 8, //milímetros por pixel
     xmin: 500,
     y: 20, //micrómetros por pixel
-    l: 10, //nanometros por pixel
+    l: 8, //nanometros por pixel
 }
 var wave = {
     lambda: 480,
-    delta: 0
+    delta: 0,
+    min: 300,
+    max: 800
 }
 
+function calculatedistance(pixels) {
+    return ((((impactscreen.x - slits.margin - pixels) * conversion.x) + conversion.xmin) / 1000).toFixed(2)
+}
+function calculateslitslength(pixels) {
+    return ((pixels * conversion.y) / 1000).toFixed(2)
+}
 function normalize(e) {
     return {
         x: e.offsetX * canvas.width / canvas.clientWidth | 0,
@@ -56,8 +64,8 @@ function isinslitsY(pos) {
 function mousemove(e) {
     pos = normalize(e)
     if (pos.x < impactscreen.x) {
-        sliderScreenDistance = document.getElementById("slider-screen-distance")
-        screenDistance = document.getElementById("screen-distance")
+        let sliderScreenDistance = document.getElementById("slider-screen-distance")
+        let screenDistance = document.getElementById("screen-distance")
         if (isinslitsX(pos) || dragslitsX || dragslitsY) {
             if (isinslitsY(pos) || dragslitsY)
                 canvas.style.cursor = "s-resize"
@@ -68,14 +76,18 @@ function mousemove(e) {
         if (dragslitsX && pos.x > slits.margin && pos.x < (impactscreen.x - slits.margin)) {
             slits.x = pos.x
             sliderScreenDistance.value = pos.x
-            screenDistance.innerHTML = ((((impactscreen.x - slits.margin - pos.x) * conversion.x) + conversion.xmin) / 1000).toFixed(2)
+            screenDistance.innerHTML = calculatedistance(pos.x)
         }
         if (dragslitsY) {
+            let sliderslitsdistance = document.getElementById("slider-slits-distance")
+            let slitsdistance = document.getElementById("slits-distance")
             if (pos.y > contextHeight / 2 && pos.y < contextHeight - slits.margin && pos.y > contextHeight / 2 + slits.margin)
                 slits.initial = contextHeight - pos.y
             if (pos.y < contextHeight / 2 && pos.y > slits.margin && pos.y < contextHeight / 2 - slits.margin)
                 slits.initial = pos.y
             slits.length = (contextHeight - slits.num * slits.size - 2 * slits.initial) / (slits.num - 1)
+            sliderslitsdistance.value = slits.length
+            slitsdistance.innerHTML = calculateslits(slits.length)
         }
     }
 }
@@ -162,7 +174,6 @@ function drawwaves() {
 
 function clear() {
     ctx.clearRect(0, 0, impactscreen.x, contextHeight);
-    ctx.clearRect(impactscreen.x + impactscreen.width, 0, contextWidth, contextHeight);
     ctx.fillStyle = "#FAF7F8";
     rect(impactscreen.x + impactscreen.width, 0, contextWidth, contextHeight);
 }
@@ -178,6 +189,7 @@ function init() {
     contextWidth = canvas.width;
     contextHeight = canvas.height;
     calculateslits()
+    wave.lambda = wave.min
     canvas.addEventListener('mousemove', mousemove)
     canvas.addEventListener('mousedown', mousedown)
     canvas.addEventListener('mouseup', mouseup)
