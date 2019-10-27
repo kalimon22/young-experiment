@@ -64,7 +64,7 @@
                                 <div class="mdl-cell mdl-cell--4-col mdl-cell--middle   ">
                                     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
                                         for="switch-difraction">
-                                        <input type="checkbox" id="switch-difraction" class="mdl-switch__input" checked>
+                                        <input type="checkbox" id="switch-difraction" class="mdl-switch__input" >
                                         <span class="mdl-switch__label">Incluir la difracción</span>
                                     </label>
                                 </div>
@@ -83,7 +83,7 @@
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--4-col">
                                     <div style="text-align:center">Valor &delta;<sub>x</sub>: <span
-                                            id="deltax">20</span> nm.</div>
+                                            id="deltax">20</span> mm.</div>
                                 </div>
                                 <div class="mdl-cell mdl-cell--4-col">
                                     <div style="text-align:center">Posición en pantalla: <span id="position">0</span>
@@ -125,37 +125,21 @@
             <div class="mdl-layout__tab-panel" id="notas">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
-                        <h4>Features</h4>
-                        Minim duis incididunt est cillum est ex occaecat consectetur. Qui sint ut et qui nisi cupidatat.
-                        Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
-                        <ul class="toc">
-                            <h4>Contents</h4>
-                            <a href="#lorem1">Lorem ipsum</a>
-                            <a href="#lorem2">Lorem ipsum</a>
-                            <a href="#lorem3">Lorem ipsum</a>
-                            <a href="#lorem4">Lorem ipsum</a>
-                            <a href="#lorem5">Lorem ipsum</a>
+                        <h4>Uso de la demo</h4>
+                        Esta demostracion del experimento de difracción de Young es de uso especiamente sencillo. La parte gráfica principal muestra tres elementos:
+                        <ul >
+                            <li>Una barra azul, que representa la localización de las rendijas. En un PC, tanto la posición de las rendijas como la distancias que las separa puede regularse arrastrando con el ratón. En dispositivos móviles, esta acción puede realizarse mediante los controles deslizantes que hay en la parte inferior.</li>
+                            <li>Una pantalla, que representa los impactos fotónicos que son recibidos.</li>
+                            <li>Una representación gráfica de la intensidad en función de la localización de la pantalla.</li>
                         </ul>
-
-                        <h5 id="lorem1">Lorem ipsum dolor sit amet</h5>
-                        Excepteur et pariatur officia veniam anim culpa cupidatat consequat ad velit culpa est non.
-                        <ul>
-                            <li>Nisi qui nisi duis commodo duis reprehenderit consequat velit aliquip.</li>
-                            <li>Dolor consectetur incididunt in ipsum laborum non et irure pariatur excepteur anim
-                                occaecat officia sint.</li>
-                            <li>Lorem labore proident officia excepteur do.</li>
-                        </ul>
-
-                        <p>
-                            Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor
-                            id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea
-                            mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa
-                            sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id
-                            culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate
-                            irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore
-                            nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna
-                            excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-                        </p>
+                        En la parte superior, se dispone de un selector del número de rendijas, un switch que permite tener en cuenta (o no) la difracción, y un botón para limpiar los impactos que se hayan recibido en la pantalla.
+                        La parte inferor incluye, amén de los deslizadores que controlan la posición de las rendijas, otro para modificar la longitud de onda utilizado.
+                        También se incluyen tres indicaciones que, de forma dinámica, nos permitirán conocer:
+                        <ul >
+                            <li>La distancia entre máximos de intensidad en función de los parámetros elegidos. </li>
+                            <li>La coordenada y (en milímetros) de la pantalla sobre la que tenemos colocado el ratón en cada momento.</li>
+                            <li>La intensidad relativa (con mínimo 0, máximo 1) en dicha poisición de la pantalla.</li>
+                        </ul>                      
 
                     </div>
                 </section>
@@ -165,13 +149,11 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Recursos abiertos utilizados</h4>
                         Para la creación de está página, se han utilizado algunos recursos abiertos disponibles en
-                        internet
+                        internet:
                         <ul>
                             <li>La librería de componentes <a href="https://getmdl.io">Material Design Lite</a>, con
                                 licencia libre Apache. La estructura de la página se basa en una de las <a
-                                    href="https://getmdl.io/templates/text-only/index.html">plantillas</a></li>
-                            <li>La librería de iconos <a href="https://freeicons.io/">freeicons.io</a>, para la
-                                obtención del favicon utlilizado</li>
+                                    href="https://getmdl.io/templates/text-only/index.html">plantillas.</a></li>
                         </ul>
                         <h4>Fuentes de inspiración</h4>
                         Se han tomado diferentes ideas, tanto de emulación como de disposición de los elementos gráficos
@@ -182,14 +164,14 @@
                             Educational Resources / Open Source Physics @ Singapore</a>. También se han tomado algunas
                             ideas gráficas que han servido de inspiración, de:<ul>
                             <li>Ideas para la representacion de las ondas <a
-                                    href="https://github.com/spennino/double-slit">https://github.com/spennino/double-slit</a>
+                                    href="https://github.com/spennino/double-slit">https://github.com/spennino/double-slit</a>.
                             </li>
                             <li>Disposición física de los elementos gráficos, e ideas para la creación de la
                                 simulación de <a
-                                    href="https://github.com/sunDalik/Interference-simulator">https://github.com/sunDalik/Interference-simulator</a>
+                                    href="https://github.com/sunDalik/Interference-simulator">https://github.com/sunDalik/Interference-simulator</a>.
                             </li>
                             <li>Base teórica y algunas ecuaciones de la web de <a
-                                    href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/slits.html">hyperphysics</a>
+                                    href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/slits.html">hyperphysics</a>.
                             </li>
                             </ul>
                     </div>

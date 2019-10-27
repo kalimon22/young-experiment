@@ -19,12 +19,13 @@ var slits = {
 }
 var impactscreen = {
     x: 700,
-    width: 50
+    width: 50,
+    margin: 5
 }
 var conversion = {
     x: 8, //milímetros por pixel
     xmin: 500,
-    y: 20, //micrómetros por pixel
+    y: 300, //micrómetros por pixel
     l: 8, //nanometros por pixel
 }
 var wave = {
@@ -32,7 +33,60 @@ var wave = {
     delta: 0,
     min: 300,
     max: 800,
-    dif: true,
+    dif: false,
+}
+var results = {
+    value: [],
+    acc: []
+}
+function sinc(x) {
+    if (x == 0)
+        return 1;
+    else
+        return Math.sin(x) / x;
+}
+
+function drawgraph() {
+    ctx.strokeStyle = "red"
+    ctx.beginPath()
+    let inicio = impactscreen.x + impactscreen.width + impactscreen.margin
+    for (var i = 0; i < contextHeight; i++) {
+        ctx.lineTo(results.value[i] * (contextWidth - impactscreen.margin - inicio) + inicio, i)
+    }
+
+    ctx.stroke()
+}
+
+function calculateresults() {
+    results.acc = []
+    results.value = []
+    let delta = (2 * Math.PI * calculateslitslength(slits.length)) / (wave.lambda / 1000)
+    wave.delta = ((calculatedistance(slits.x) * 1000) / calculateslitslength(slits.length)) * (wave.lambda / 1000)
+    for (var i = 0; i < contextHeight; i++) {
+        let position = (((contextHeight / 2 - i) * conversion.y) / 1000)
+        let distance = calculatedistance(slits.x) * 1000
+        let hypho = Math.sqrt(position * position + distance * distance)
+        let deltaM = (delta * (position / hypho)) / 2
+        let result
+        if (slits.num == 1)
+            result = sinc(deltaM)
+        else {
+            result = (Math.sin(slits.num * deltaM) / Math.sin(deltaM))
+            if (isNaN(result))
+                result = 1
+            else
+                result /= slits.num
+            if (wave.dif)
+                result *= sinc(deltaM)
+        }
+        result = result * result
+        results.value.push(result)
+        if (i == 0)
+            results.acc.push(result * 100)
+        else
+            results.acc.push(result * 100 + results.acc[i - 1])
+    }
+    document.getElementById("deltax").innerHTML = wave.delta.toFixed(2)
 }
 
 function calculatedistance(pixels) {
@@ -78,6 +132,7 @@ function mousemove(e) {
             slits.x = pos.x
             sliderScreenDistance.value = pos.x
             screenDistance.innerHTML = calculatedistance(pos.x)
+            calculateresults()
         }
         if (dragslitsY) {
             let sliderslitsdistance = document.getElementById("slider-slits-distance")
@@ -89,6 +144,7 @@ function mousemove(e) {
             slits.length = (contextHeight - slits.num * slits.size - 2 * slits.initial) / (slits.num - 1)
             sliderslitsdistance.value = slits.length
             slitsdistance.innerHTML = calculateslitslength(slits.length)
+            calculateresults()
         }
     }
 }
@@ -139,7 +195,10 @@ function drawpointslayer() {
 
 function drawpoint() {
     let x = Math.floor(Math.random() * (impactscreen.x + impactscreen.width - impactscreen.x)) + impactscreen.x;
-    let y = Math.floor(Math.random() * contextWidth)
+    let random = Math.floor(Math.random() * results.acc[contextHeight - 1])
+    let y = 0
+    while (results.acc[y] < random)
+        y++
     ctx.fillStyle = "white"
     ctx.fillRect(x, y, 1, 1)
 }
@@ -169,6 +228,15 @@ function drawwaves() {
         }
         limit = limit + slits.size + slits.length
     }
+    radio = radiostep + wavespeed.radio;
+    while (radio < slits.x)
+    {
+        ctx.beginPath();
+        ctx.moveTo(radio, 0);
+        ctx.lineTo(radio, contextHeight);
+        ctx.stroke()
+        radio+=radiostep
+    }
     ctx.globalCompositeOperation = 'source-over';
 
 }
@@ -191,6 +259,7 @@ function init() {
     contextHeight = canvas.height;
     calculateslits()
     wave.lambda = wave.min
+    calculateresults()
     canvas.addEventListener('mousemove', mousemove)
     canvas.addEventListener('mousedown', mousedown)
     canvas.addEventListener('mouseup', mouseup)
@@ -202,6 +271,7 @@ function draw() {
     drawslits();
     drawpoint();
     drawwaves();
+    drawgraph();
     requestAnimationFrame(draw)
 }
 
