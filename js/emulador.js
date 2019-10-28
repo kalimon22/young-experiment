@@ -11,7 +11,9 @@ var wavespeed = {
 }
 var slits = {
     x: 30,
-    size: 10,
+    size: 30,
+    minsize: 1,
+    maxsize: 60,
     margin: 10,
     length: 0,
     initial: 0,
@@ -31,7 +33,7 @@ var conversion = {
 var wave = {
     lambda: 480,
     delta: 0,
-    min: 300,
+    min: 200,
     max: 800,
     dif: false,
 }
@@ -60,24 +62,26 @@ function drawgraph() {
 function calculateresults() {
     results.acc = []
     results.value = []
-    let delta = (2 * Math.PI * calculateslitslength(slits.length)) / (wave.lambda / 1000)
+    let deltad = (Math.PI * calculateslitslength(slits.length)) / (wave.lambda / 1000)
+    let deltaa = (Math.PI * calculateslitslength(slits.size)) / (wave.lambda / 1000)
     wave.delta = ((calculatedistance(slits.x) * 1000) / calculateslitslength(slits.length)) * (wave.lambda / 1000)
     for (var i = 0; i < contextHeight; i++) {
         let position = (((contextHeight / 2 - i) * conversion.y) / 1000)
         let distance = calculatedistance(slits.x) * 1000
         let hypho = Math.sqrt(position * position + distance * distance)
-        let deltaM = (delta * (position / hypho)) / 2
+        let deltaMa = (deltaa * (position / hypho)) 
+        let deltaMd = (deltad * (position / hypho))
         let result
         if (slits.num == 1)
-            result = sinc(deltaM)
+            result = sinc(deltaMa)
         else {
-            result = (Math.sin(slits.num * deltaM) / Math.sin(deltaM))
+            result = (Math.sin(slits.num * deltaMd) / Math.sin(deltaMd))
             if (isNaN(result))
                 result = 1
             else
                 result /= slits.num
             if (wave.dif)
-                result *= sinc(deltaM)
+                result *= sinc(deltaMa)
         }
         result = result * result
         results.value.push(result)

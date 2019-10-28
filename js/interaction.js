@@ -75,8 +75,24 @@ document.getElementById("slider-slits-distance").addEventListener("change", func
     calculateresults()
 
 })
+document.getElementById("slider-slits-size").value = slits.size
+document.getElementById("slider-slits-size").min = slits.minsize
+document.getElementById("slider-slits-size").max = slits.maxsize
 
-document.getElementById("switch-difraction").addEventListener("change", function(ev){
-    wave.dif=this.checked
+document.getElementById("slider-slits-size").addEventListener("input", function (ev) {
+    document.getElementById("slits-size").innerHTML = calculateslitslength(this.value)
+    slits.size = parseInt(this.value)
+    calculateslits()
+    calculateresults()
+})
+document.getElementById("slider-slits-size").addEventListener("change", function (ev) {
+    document.getElementById("slits-size").innerHTML = calculateslitslength(this.value)
+    slits.size = parseInt(this.value)
+    calculateslits()
+    calculateresults()
+})
+
+document.getElementById("switch-difraction").addEventListener("change", function (ev) {
+    wave.dif = this.checked
     calculateresults()
 })
