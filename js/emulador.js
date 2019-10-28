@@ -35,7 +35,7 @@ var wave = {
     delta: 0,
     min: 200,
     max: 800,
-    dif: false,
+    dif: true,
 }
 var results = {
     value: [],
